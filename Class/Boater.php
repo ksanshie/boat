@@ -2,7 +2,7 @@
 class Boater extends Man {
 	
 	public function __construct($logger) {
-		parent::__construct('Boater', $logger);
+		parent::__construct($logger, 'Boater');
 		
 	}
 	

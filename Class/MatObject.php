@@ -28,7 +28,7 @@ class MatObject {
 	
 	public function toCoast($what) {
 		$this->onCoast = $what;
-		$this->log('Boat set onto '. $what . ' coast.');
+		$this->log(get_class($this) . ' set onto '. $what . ' coast.');
 	}
 	
 	public function onCoast() {

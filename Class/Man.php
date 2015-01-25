@@ -5,8 +5,9 @@ class Man extends MatObject {
 	
 	private $name;
 	
-	public function __construct($name, $logger) {
+	public function __construct($logger, $name) {
 		parent::__construct($logger);
+		$this->log('It is ' . $name);
 		$this->name = $name;
 	}
 	

@@ -7,12 +7,16 @@ class Boat extends MatObject {
 	
 
 	
-	public function __construct($logger) {
+	public function __construct($logger, Creator $creator) {
 		parent::__construct($logger);
 		
-		// Here's boat individual state
-		$this->addInBoat(new Boater($logger));
+		// Here's boat individual state'
+		$boater = new Boater($logger);
+		$creator->addToWorld($boater);
+		
+		$this->addInBoat($boater);
 		$this->toCoast('left');
+		$creator->addToWorld($this);
 	}
 	
 	public function addInBoat(MatObject $what) {
@@ -47,5 +51,30 @@ class Boat extends MatObject {
 		}
 	}
 	
+	public function getFromBoat(MatObject $what) {
+		$inBCount = count($this->inBoat);
+		for ($i = 0; $i < $inBCount; $i++) {
+			if ($this->inBoat[$i] == $what) {
+				unset($this->inBoat[$i]);
+			}
+		}	
+	}
 	
+	public function toCoast($what) {
+		parent::toCoast($what);
+		$inBCount = count($this->inBoat);
+		for ($i = 0; $i < $inBCount; $i++) {
+			$this->inBoat[$i]->toCoast($what);
+			
+		}
+		
+	}
+
+	public function whosIn() {
+		return $this->inBoat;
+	}
+	
+	public function getName() {
+		return 'Boat';
+	}
 }	
