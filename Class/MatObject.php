@@ -5,7 +5,7 @@ class MatObject {
 	
 	private $coast;
 	
-	const PLACESOCCUPIED = 0;
+	protected $PLACESOCCUPIED = 0;
 	
 	public function __construct (Logger $logger) {
 		$this->logger = $logger;
@@ -17,9 +17,11 @@ class MatObject {
 	function log($text, $additional_params = '') {
 		$this->logger->log($text, $additional_params);
 	}
+	
+	
 
 	public function placesOccupied() {
-		return self::PLACESOCCUPIED;
+		return $this->PLACESOCCUPIED;
 	}
 	
 	public function getName() {

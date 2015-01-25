@@ -1,5 +1,5 @@
 <?php
 class Child extends Man {
 
-	const PLACESOCCUPIED = 1;
+	protected $PLACESOCCUPIED = 1;
 }

@@ -22,14 +22,17 @@ class Boat extends MatObject {
 	public function addInBoat(MatObject $what) {
 		$alreadyIn = 0;
 		$inBCount = count($this->inBoat);
-		for ($i = 0; $i < $inBCount; $i++) {
-			$alreadyIn += $this->inBoat[$i]->placesOccupied();
+		if ($inBCount) {
+			for ($i = 0; $i < $inBCount; $i++) {
+				$alreadyIn += $this->inBoat[$i]->placesOccupied();
+				
+			}
 		}
 		if ($alreadyIn >= self::CAPABILITY) {
-			throw new Error('Cannot place anyone in boat. Boat is full');
+			throw new Exception('Cannot place anyone in boat. Boat is full');
 		}
 		if ($alreadyIn + $what->placesOccupied() > self::CAPABILITY) {
-			throw new Error('Cannot place ' . $what->getName() . ' into boat. Didn\'t fit.');
+			throw new Exception('Cannot place ' . $what->getName() . ' into boat. Didn\'t fit.');
 		}
 		$this->log( $what->getName() . " gets into boat.");
 		$this->inBoat[] = $what;
@@ -53,11 +56,13 @@ class Boat extends MatObject {
 	
 	public function getFromBoat(MatObject $what) {
 		$inBCount = count($this->inBoat);
-		for ($i = 0; $i < $inBCount; $i++) {
+		for ($i = $inBCount - 1; $i >= 0; $i--) {
 			if ($this->inBoat[$i] == $what) {
+				$this->log( $what->getName() . " gets out of boat.");
 				unset($this->inBoat[$i]);
 			}
-		}	
+		}
+		$this->inBoat = array_values($this->inBoat);	
 	}
 	
 	public function toCoast($what) {
@@ -77,4 +82,14 @@ class Boat extends MatObject {
 	public function getName() {
 		return 'Boat';
 	}
+	
+	public function isInBoat(MatObject $what) {
+		$inBCount = count($this->inBoat);
+		for ($i = $inBCount - 1; $i >= 0; $i--) {
+			if ($this->inBoat[$i] == $what) {
+				return true;
+			}
+		}
+		return false;
+	} 
 }	

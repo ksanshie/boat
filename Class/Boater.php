@@ -6,5 +6,5 @@ class Boater extends Man {
 		
 	}
 	
-	const PLACESOCCUPIED = 2;
+	protected $PLACESOCCUPIED = 2;
 }

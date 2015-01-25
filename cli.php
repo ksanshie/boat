@@ -15,7 +15,10 @@ $worldmap = new Creator($logger, $init);
 
 $boat = new Boat($logger, $worldmap);
 
-foreach($worldmap->world() as $item) {
-	echo $item->getName(); echo "\n";
-	
-}
+$manager = new Manager($worldmap);
+
+//$worldmap->logWorld();
+
+$manager->solve();
+
+
