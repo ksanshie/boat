@@ -8,7 +8,11 @@ $init = array(
 	'Adult Jeronimo left',
 	'Adult Maria left',
 	'Child Barbra left',
-	'Child John left'	
+	'Child John left',
+	'Adult Peter left',
+	'Adult Gala left',
+	'Child Collin left',
+	'Child Mariam left'					
 );
 
 $worldmap = new Creator($logger, $init);

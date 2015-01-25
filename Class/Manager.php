@@ -65,24 +65,32 @@ class Manager {
 			
 			$anyOne = $this->findAdult(1, 'left');
 			if (!$anyOne) {
-				$anyOne = $this->findChild(1, 'left');
+				$anyOne = $this->findChild(2, 'left');
 			}
 			
 			if ($anyOne) {
 				$boat->addInBoat($anyOne[0]);
+				if (get_class($anyOne[0]) == 'Child' && isset($anyOne[1])) {
+					$boat->addInBoat($anyOne[1]);
+				}
 				$this->worldProvider->logWorld();
 					
 				$boat->toCoast('right');
 				$this->worldProvider->logWorld();
-					
+
+				
 				$boat->getFromBoat($anyOne[0]);
+				if ($boat->whosIn()) {
+					$boat->getFromBoat($anyOne[1]);
+				}
 				
 				continue;
 			} else {
 				break;
 			}
 			
-			
+			$this->worldProvider->logWorld();
+				
 			
 		}
 		
@@ -101,6 +109,7 @@ class Manager {
 				$find[] = $item;
 			}
 		}
+		shuffle($find);
 		return $find;
 	}
 	
