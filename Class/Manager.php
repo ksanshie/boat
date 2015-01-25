@@ -28,7 +28,7 @@ class Manager {
 		
 		while ($this->canTransferAnyOneRight()) {
 			
-			//$this->worldProvider->logWorld();
+			$this->worldProvider->logWorld();
 			
 			if ($this->cannotSendBoatBack()) {
 				
@@ -38,7 +38,11 @@ class Manager {
 				}
 				$boat->addInBoat($childs[0]);
 				$boat->addInBoat($childs[1]);
+				$this->worldProvider->logWorld();
+					
 				$boat->toCoast('right');
+				$this->worldProvider->logWorld();
+					
 				$boat->getFromBoat($childs[0]);
 				$boat->getFromBoat($childs[1]);
 				
@@ -50,7 +54,11 @@ class Manager {
 				
 				$kidReturner = $this->findChild(1, 'right');
 				$boat->addInBoat($kidReturner[0]);
+				$this->worldProvider->logWorld();
+					
 				$boat->toCoast('left');
+				$this->worldProvider->logWorld();
+					
 				$boat->getFromBoat($kidReturner[0]);
 				continue;
 			}
@@ -62,8 +70,13 @@ class Manager {
 			
 			if ($anyOne) {
 				$boat->addInBoat($anyOne[0]);
+				$this->worldProvider->logWorld();
+					
 				$boat->toCoast('right');
+				$this->worldProvider->logWorld();
+					
 				$boat->getFromBoat($anyOne[0]);
+				
 				continue;
 			} else {
 				break;

@@ -68,7 +68,7 @@ class Creator {
 				if ($item->onCoast() == 'right') {
 					$onRight[] = $item;
 				}
-				break;
+				
 			}
 		}
 		
@@ -86,6 +86,8 @@ class Creator {
 				$out .= '.';
 			}
 		}
+		
+		$out = strrev($out);
 		// Coast
 		$out .= "/\\";
 		
@@ -135,14 +137,11 @@ class Creator {
 				$out .= '.';
 			}
 		}
-		
-		print_r($onLeft);
-		print_r($onRight);
-		print_r($onBoat);
-		
+				
 		$this->logger->log($out);
-		
-		
 	}
+	
+	
+	
 	
 }
