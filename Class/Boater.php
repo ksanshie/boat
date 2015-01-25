@@ -1,10 +1,9 @@
 <?php
-class Boater extends MatObject {
+class Boater extends Man {
 	
 	public function getName() {
 		return 'Boater';
 	}
 
 	const PLACESOCCUPIED = 2;
-	
 }
