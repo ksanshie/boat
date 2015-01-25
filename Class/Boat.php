@@ -5,7 +5,7 @@ class Boat extends MatObject {
 	
 	const CAPABILITY = 2; // One child have size 1; Man is 2
 	
-	private $coast;
+
 	
 	public function __construct($logger) {
 		parent::__construct($logger);
@@ -31,10 +31,7 @@ class Boat extends MatObject {
 		$this->inBoat[] = $what;
 	}
 
-	public function toCoast($what) {
-		$this->onCoast = $what;
-		$this->log('Boat set onto '. $what . ' coast.');
-	}
+
 
 	public function status() {
 		$this->log('Boat is on ' . $this->onCoast . " coast.");

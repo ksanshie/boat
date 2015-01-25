@@ -1,9 +1,10 @@
 <?php
 class Boater extends Man {
 	
-	public function getName() {
-		return 'Boater';
+	public function __construct($logger) {
+		parent::__construct('Boater', $logger);
+		
 	}
-
+	
 	const PLACESOCCUPIED = 2;
 }

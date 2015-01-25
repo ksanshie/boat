@@ -1,8 +1,6 @@
 <?php
-class Man extends MatObject {
+class Adult extends Man {
 
-	private $onCoast = '';
-	
 	private $name;
 	
 	public function __construct($name, $logger) {
@@ -10,12 +8,6 @@ class Man extends MatObject {
 		$this->name = $name;
 	}
 	
-	public function getName() {
-		return $this->name;
-	}
 
-
-	
-
-	
+	const PLACESOCCUPIED = 2;
 }

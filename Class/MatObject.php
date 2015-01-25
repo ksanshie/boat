@@ -3,6 +3,8 @@ class MatObject {
 	
 	private $logger;
 	
+	private $coast;
+	
 	const PLACESOCCUPIED = 0;
 	
 	public function __construct (Logger $logger) {
@@ -24,5 +26,13 @@ class MatObject {
 		return 'Nothing';
 	}
 	
+	public function toCoast($what) {
+		$this->onCoast = $what;
+		$this->log('Boat set onto '. $what . ' coast.');
+	}
+	
+	public function onCoast() {
+		return $this->onCoast;
+	}
 	
 }
