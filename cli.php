@@ -4,5 +4,6 @@ include_once('autoload.php');
 
 $logger = new CliLogger();
 
-$object = new MatObject($logger);
+$boat = new Boat($logger);
 
+$boat->status();
