@@ -1,3 +1,4 @@
+<pre>
 <?php
 // Includes of classes
 include_once('autoload.php');
@@ -12,7 +13,7 @@ $init = array(
 	'Adult Peter left',
 	'Adult Gala left',
 	'Child Collin left',
-	'Child Mariam left'					
+	'Child Mariam left'
 );
 
 $worldmap = new Creator($logger, $init);
@@ -25,4 +26,5 @@ $manager = new Manager($worldmap);
 
 $manager->solve();
 
-
+?>
+</pre>
