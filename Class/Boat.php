@@ -2,11 +2,11 @@
 class Boat extends MatObject {
 	
 	private $inBoat = array();
+
+    private $iterations  = 0;
 	
 	const CAPABILITY = 2; // One child have size 1; Man is 2
-	
 
-	
 	public function __construct($logger, Creator $creator) {
 		parent::__construct($logger);
 		
@@ -66,13 +66,16 @@ class Boat extends MatObject {
 	}
 	
 	public function toCoast($what) {
+
+        if(parent::onCoast()!='' && parent::onCoast()!=$what){
+            $this->iterations++;
+            $this->log( "There is a ".$this->iterations . " iteration.");
+        }
 		parent::toCoast($what);
 		$inBCount = count($this->inBoat);
 		for ($i = 0; $i < $inBCount; $i++) {
 			$this->inBoat[$i]->toCoast($what);
-			
 		}
-		
 	}
 
 	public function whosIn() {
@@ -82,6 +85,10 @@ class Boat extends MatObject {
 	public function getName() {
 		return 'Boat';
 	}
+
+    public function getIterations() {
+        return $this->iterations;
+    }
 	
 	public function isInBoat(MatObject $what) {
 		$inBCount = count($this->inBoat);

@@ -8,7 +8,7 @@ class Manager {
 	function solve() {
 		
 		// Initial - all on Left
-		
+
 		if (!$this->canTransferAnyOneRight()) {
 			throw new Exception('Cannot transfer anyone to another side.');
 		}
@@ -67,7 +67,7 @@ class Manager {
 			if (!$anyOne) {
 				$anyOne = $this->findChild(2, 'left');
 			}
-			
+
 			if ($anyOne) {
 				$boat->addInBoat($anyOne[0]);
 				if (get_class($anyOne[0]) == 'Child' && isset($anyOne[1])) {
@@ -88,13 +88,14 @@ class Manager {
 			} else {
 				break;
 			}
-			
+
 			$this->worldProvider->logWorld();
 				
 			
 		}
-		
-		
+
+
+        echo ('There was a '.$boat->getIterations().' iterations');
 		// Final - all on Right, except Boater and Boat
 		
 	}
